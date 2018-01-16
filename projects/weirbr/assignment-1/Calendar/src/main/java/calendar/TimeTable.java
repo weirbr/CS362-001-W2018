@@ -67,7 +67,8 @@ public class TimeTable {
 				GregorianCalendar apptOccursOn = (GregorianCalendar) itr.next();
 
 				while (nextDay.before(apptOccursOn)) {
-					daysDifference++;
+					/*BUG 2: increments by 2 instead of by 1, won't be able to find reoccuring appointments*/
+				        daysDifference=daysDifference+2;
 					nextDay.add(nextDay.DAY_OF_MONTH, 1);
 				}
 
