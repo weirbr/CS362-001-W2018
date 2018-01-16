@@ -118,6 +118,7 @@ public class Appt implements  Comparable<Appt>{
         	if(startMinute<0 || startMinute>59)
         		this.valid=false;
         	else
+		   /*BUG 1: changed the OR to an AND, includes bad dates now*/
             	if(startDay<1 || startDay>NumDaysInMonth)
             		this.valid=false;
             	else
