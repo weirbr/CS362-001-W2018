@@ -110,7 +110,8 @@ public class TimeTable {
 	            
 
 	            //Make sure that there is a limited number of recurrences
-	            for (int i = 0; i < appt.getRecurNumber()+1; i++) {
+	            /*BUG 5: appt.getRecurNumber()+1 is the original line */
+		    for (int i = 0; i < appt.getRecurNumber(); i++) {
 	                
 	                //Add the day of occurrence to the list if it is after the first day
 	                if (!occurrenceDay.before(firstDay)) {
