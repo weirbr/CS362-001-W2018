@@ -119,7 +119,7 @@ public class Appt implements  Comparable<Appt>{
         		this.valid=false;
         	else
 		   /*BUG 1: changed the OR to an AND, includes bad dates now*/
-            	if(startDay<1 || startDay>NumDaysInMonth)
+            	if(startDay<1 && startDay>NumDaysInMonth)
             		this.valid=false;
             	else
                 	if(startMonth<1 || startMonth>12)
