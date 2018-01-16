@@ -26,8 +26,8 @@ public class CalendarUtil {
 	*	@return the number of days in the specified month and year
 	**/
 	public static int NumDaysInMonth(int year, int month) {
-		
-		int baseDays = DaysInMonth[month];
+	        /*BUG 4: Month is one more than it should be thinking Jan should be 1 or something*/	
+		int baseDays = DaysInMonth[month+1];
 	
 		if(IsLeapYear(year) && (month == FEBRUARY)) {
 				baseDays = baseDays + 1;
