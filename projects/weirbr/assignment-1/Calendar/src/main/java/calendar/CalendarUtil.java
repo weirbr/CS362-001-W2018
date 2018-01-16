@@ -54,6 +54,7 @@ public class CalendarUtil {
 		}
 	
 		//year is also leap year if multiple of 4
+		/*BUG 3: used division instead of the mod operator. Division wouldn't get 0 as the number and leap years cannot be found*/
 		if ((year % 4) == 0) {
 			return true;
 		}
