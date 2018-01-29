@@ -67,7 +67,8 @@ public class TimeTable {
 				GregorianCalendar apptOccursOn = (GregorianCalendar) itr.next();
 
 				while (nextDay.before(apptOccursOn)) {
-					daysDifference++;
+					//BUG 2
+				        daysDifference+2;
 					nextDay.add(nextDay.DAY_OF_MONTH, 1);
 				}
 
@@ -109,7 +110,8 @@ public class TimeTable {
 	            
 
 	            //Make sure that there is a limited number of recurrences
-	            for (int i = 0; i < appt.getRecurNumber()+1; i++) {
+	           //BUG 5 
+		   for (int i = 0; i < appt.getRecurNumber(); i++) {
 	                
 	                //Add the day of occurrence to the list if it is after the first day
 	                if (!occurrenceDay.before(firstDay)) {
