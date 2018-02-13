@@ -24,8 +24,6 @@ public class CalDayTest {
 	     CalDay newDay = new CalDay(Day);
 
 	     String stringForCompare = "4/15";
-	     /*String stringForCompare = "April 15 2018	--- February 11 2018 ---\n --- -------- Appointments -------- --- \n";
-*/
 	     String stringInput = newDay.toString();
 	     String monthWord = stringInput.substring(6, 10);
 
@@ -34,7 +32,6 @@ public class CalDayTest {
 	     assertEquals(15, newDay.getDay());
 	     assertEquals(4, newDay.getMonth());
 	     assertEquals(2018, newDay.getYear());
-	     //no work!
 	     assertEquals(stringForCompare, monthWord);
 
 
@@ -60,7 +57,12 @@ public class CalDayTest {
 	     CalDay newDay = new CalDay(Day);
 	     Appt appt = new Appt(startHour, startMinute, startDay, startMonth, startYear, title, description);
 	     newDay.addAppt(appt);
+
+	     //LinkedList<Appt> apptLL = new LinkedList<Appt>();
+	     //apptList.add(appt);
+	     assertEquals(1, newDay.getSizeAppts());
 		 
+	     //assertEquals(apptList, newDay.getAppts());
 	     assertEquals(16, newDay.getDay());
 	     assertEquals(4, newDay.getMonth());
 	     assertEquals(2018, newDay.getYear());

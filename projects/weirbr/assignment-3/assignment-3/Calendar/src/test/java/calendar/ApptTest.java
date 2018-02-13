@@ -112,6 +112,10 @@ public class ApptTest {
 	     assertEquals(1, appt.getRecurIncrement());
 	     assertEquals(1, appt.getRecurNumber());
 
+	     assertEquals(0, appt.compareTo(appt));
+
+	     assertEquals("10/2/2018", appt.toString().substring(1, 10));
+
 
 	}
 	
