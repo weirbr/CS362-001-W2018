@@ -3,6 +3,7 @@ package calendar;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
 import java.util.Random;
+import java.util.LinkedList;
 
 import org.junit.Test;
 
@@ -24,7 +25,7 @@ public class CalDayRandomTest {
 	 * Return a randomly selected method to be tests !.
 	 */
       public static String RandomSelectMethod(Random random){
-        String[] methodArray = new String[] {"addAppt","setApps"};// The list of the of methods to be tested in the CalDay class
+        String[] methodArray = new String[] {"addAppt","setAppts"};// The list of the of methods to be tested in the CalDay class
 
     	int n = random.nextInt(methodArray.length);// get a random number between 0 (inclusive) and  methodArray.length (exclusive)
 
@@ -73,52 +74,60 @@ public class CalDayRandomTest {
 							 Appt appt = new Appt(startHour,
 						          startMinute ,
 						          startDay ,
-							  startMonth ,
+							  			startMonth ,
 						          startYear ,
 						          title,
 						         description);
 
 						   testDay.addAppt(appt);
+							 testDay.toString();
+							 testDay.iterator();
 						}
-						else if(methodName.equals("setApps")){
-							LinkedList<Appt> appts = new LinkedList<Appt>();
+						else if (methodName.equals("setAppts")){   //actually a private method so it can't be reached easily like this
 							int startHour=ValuesGenerator.RandInt(random);
-			 			 int startMinute=ValuesGenerator.RandInt(random);
-			 			 int startDay=ValuesGenerator.RandInt(random);;
-			 			 int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 11);
-			 			 int startYear=ValuesGenerator.RandInt(random);
-			 			 String title="Birthday Party";
-			 			 String description="This is my birthday party.";
+							int startMinute=ValuesGenerator.RandInt(random);
+							int startDay=ValuesGenerator.RandInt(random);;
+							int startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 11);
+							int startYear=ValuesGenerator.RandInt(random);
+							String title="Birthday Party";
+							String description="This is my birthday party.";
 
-			 			 Appt appt1 = new Appt(startHour,
-			 							startMinute ,
-			 							startDay ,
-			 							startMonth ,
-			 							startYear ,
-			 							title,
-			 						 description);
+							Appt appt = new Appt(startHour,
+										 startMinute ,
+										 startDay ,
+										 startMonth ,
+										 startYear ,
+										 title,
+										description);
+
+							testDay.addAppt(appt);
+
+							int startHour2=ValuesGenerator.RandInt(random);
+							int startMinute2=ValuesGenerator.RandInt(random);
+							int startDay2=ValuesGenerator.RandInt(random);;
+							int startMonth2=ValuesGenerator.getRandomIntBetween(random, 1, 11);
+							int startYear2=ValuesGenerator.RandInt(random);
+							String title2="Birthday Party";
+							String description2="This is my birthday party.";
+
+							Appt appt2 = new Appt(startHour2,
+										 startMinute2 ,
+										 startDay2 ,
+										 startMonth2 ,
+										 startYear2 ,
+										 title2,
+										description2);
+
+							testDay.addAppt(appt2);
+
+							/*LinkedList<Appt> apptList = new LinkedList<Appt>();
+							apptList.add(appt);
+							apptList.add(appt2);
+*/
+							testDay.getSizeAppts();
 						}
-						appts.addAppt(appt1);
-
-						startHour=ValuesGenerator.RandInt(random);
-		 			 startMinute=ValuesGenerator.RandInt(random);
-		 			 startDay=ValuesGenerator.RandInt(random);;
-		 			 startMonth=ValuesGenerator.getRandomIntBetween(random, 1, 11);
-		 			 startYear=ValuesGenerator.RandInt(random);
-		 			 title="Birthday Party";
-		 			 description="This is my birthday party.";
-
-		 			 Appt appt2 = new Appt(startHour,
-		 							startMinute ,
-		 							startDay ,
-		 							startMonth ,
-		 							startYear ,
-		 							title,
-		 						 description);
-
-								 appts.addAppt(appt2);
-						testDay.setApps(appts);
 					}
+
 
 			elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
  					if((iteration%10000)==0 && iteration!=0 )

@@ -4,11 +4,11 @@ import java.util.GregorianCalendar;
 import java.util.Calendar;
 import java.util.Random;
 import java.util.LinkedList;
+import java.sql.Time;
 
 import org.junit.Test;
-
-
 import static org.junit.Assert.*;
+import org.omg.CORBA.TIMEOUT;
 
 /**
  * Random Test Generator  for TimeTable class.
@@ -36,17 +36,20 @@ public class TimeTableRandomTest {
 			long startTime = Calendar.getInstance().getTimeInMillis();
  		 long elapsed = Calendar.getInstance().getTimeInMillis() - startTime;
 
+		 long randomseed = System.currentTimeMillis();
+		 Random random = new Random(randomseed);
+
 
  		 System.out.println("Start testing...");
 
  		try{
  			for (int iteration = 0; elapsed < TestTimeout; iteration++) {
- 				long randomseed =System.currentTimeMillis(); //10
+ 				//long randomseed =System.currentTimeMillis(); //10
  	//			System.out.println(" Seed:"+randomseed );
- 				Random random = new Random(randomseed);
+ 				//Random random = new Random(randomseed);
 
 				int Year = ValuesGenerator.RandInt(random);
-			 	int Month = ValuesGenerator.getRandomIntBetween(random, 0, 12);
+			 	int Month = ValuesGenerator.getRandomIntBetween(random, 1, 11);
 			 	int Day = ValuesGenerator.RandInt(random);
 
 			 GregorianCalendar gregDay = new GregorianCalendar(Year, Month, Day);
@@ -68,17 +71,17 @@ public class TimeTableRandomTest {
 							title,
 						 description);
 
-			 TimeTable table = new TimeTable();
 			 LinkedList<Appt> appts = new LinkedList<Appt>();
 			 appts.add(appt);
 			 testDay.addAppt(appt);
+			 TimeTable table = new TimeTable();
 
 
  			for (int i = 0; i < NUM_TESTS; i++) {
  					String methodName = ApptRandomTest.RandomSelectMethod(random);
  					   if (methodName.equals("deleteAppt")){
-							 table.deleteAppt(appts, appt);
-							 /*int Hour=ValuesGenerator.RandInt(random);
+							// table.deleteAppt(appts, appt);
+							 int Hour=ValuesGenerator.RandInt(random);
 							 int Minute=ValuesGenerator.RandInt(random);
 							 Day=ValuesGenerator.RandInt(random);;
 							 Month=ValuesGenerator.getRandomIntBetween(random, 1, 11);
@@ -96,9 +99,15 @@ public class TimeTableRandomTest {
 
 						   testDay.addAppt(appt2);
 							 appts.add(appt2);
-							 table.deleteAppt(appts, appt2);*/
-							 /*appts = null;
-							 table.deleteAppt(appts, appt);*/
+							 table.deleteAppt(appts, appt2);
+							 appts = null;
+							 table.deleteAppt(appts, appt);
+							 LinkedList<Appt> emptyList = new LinkedList<Appt>();
+							 emptyList = null;
+							 Appt emptyAppt = new Appt(0,0,0,0,0,"nothing","nothing");
+							 emptyAppt = null;
+
+							 table.deleteAppt(emptyList, emptyAppt);
 
  					   }
  					   else if (methodName.equals("getApptRange")){
@@ -136,6 +145,10 @@ public class TimeTableRandomTest {
  					   }
  				}
 
+				/*TimeTable table = new TimeTable();
+				int index = ValuesGenerator.RandInt(random);
+				table.deleteAppt(appts, appts.get(index));
+*/
  				 elapsed = (Calendar.getInstance().getTimeInMillis() - startTime);
  			        if((iteration%10000)==0 && iteration!=0 )
  			              System.out.println("elapsed time: "+ elapsed + " of "+TestTimeout);
