@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: calendar.ApptRandomTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE!
-radnomtest(calendar.ApptRandomTest)  Time elapsed: 0.001 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.005 sec <<< FAILURE!
+radnomtest(calendar.ApptRandomTest)  Time elapsed: 0.002 sec  <<< ERROR!
 java.lang.ArrayIndexOutOfBoundsException: -1
 	at calendar.CalendarUtil.NumDaysInMonth(CalendarUtil.java:30)
 	at calendar.Appt.isValid(Appt.java:113)
