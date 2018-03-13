@@ -2,3 +2,21 @@ Reviewer: Brooke Weir
 
 Reviewing Meghan Mowery's Code from Assignment 2
 
+Bug Number: 0001
+Location:
+Line 116 in Appt.java. Found by an error in ApptRandomTest.java.
+Cause: 
+The current check for startHour in isValid allows more appointments to be valid than there should be. Because it is checks whether the startHour is less than 0 and more than 23, that statement will never be true and allow invalid appointments to be counted as valid. 
+Solution:
+Change the AND statement to an OR statement. Should be if (startHour < 0 || startHour > 23) to make the appointment invalid.
+
+Bug Number: 0002
+Location: 
+Line 128 in Appt.java. Found by failures in ApptRandomTest.java.
+Cause:
+The current if statement doesn’t correctly identify valid appointments. With the current check, only appointments with a startMonth greater than 12 are counted as valid.
+Solution:
+Change if statement to correctly identify valid startMonths as greater than 1 and less than 12. 
+If (startMonth < 1 || startMonth > 12) the appointment is invalid.
+
+
